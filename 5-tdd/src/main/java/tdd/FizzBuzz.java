@@ -7,57 +7,36 @@ public class FizzBuzz {
 	
 	private Output output;
 	
-	public void setOutput(Output output) {
+	public void setOutput( Output output ) {
 		this.output = output;
 	}
 
 	public String fizzbuzz(int i) {
-		String res = "";
-
-		if (i % 3 == 0 || isDigitOf(i, 3))
+		String res = new String();
+		boolean cond1 = i % 3 == 0 || Digits.isADigit(3, i);
+		boolean cond2 = i % 5 == 0 || Digits.isADigit(5, i);
+		if ( cond1 )
 			res += "Fizz";
-		if (i % 5 == 0 || isDigitOf(i, 5))
+		if ( cond2 )
 			res += "Buzz";
-	
-		if (res.equals(""))
-			return new Integer(i).toString();
-		else
-			return res;
+		
+		return (!(cond1 || cond2)? Integer.toString( i ) : res );
 	}
-
-	public boolean isDigitOf(int i, int d) {
-		while (i > 0) {
-			if (i % 10 == d)
-				return true;
-			i = i / 10;
+	
+	public List<String> listFizzBuzz( int i, int j ) {
+		List<String> res = new LinkedList<>();
+		for( int k = i; k <= j; k++ ) {
+			res.add( fizzbuzz( k ) );
 		}
 		
-		return false;
-	}
-
-	public List<String> listFizzBuzz(int i, int j) {
-		List<String> res = new LinkedList<>();
-		for (int k = i; k <= j; k++) 
-			res.add(fizzbuzz(k));
 		return res;
 	}
 	
-	// Pre: invocar setOutput
-	public void printListFizzBuzz(int i, int j) {
-		List<String> res = listFizzBuzz(i, j);
-		for (String e: res) {
-			//System.out.println(e);
-			output.print(e);
+	public void printListFizzBuzz( int i, int j ) {
+		List<String> res = listFizzBuzz( i, j );
+		for( String e : res ) {
+			output.print( e );
 		}
 	}
 
-	public static void main(String [] args) {
-		FizzBuzz fb = new FizzBuzz();
-		Output o = new ConsoleOutput();
-		fb.setOutput(o);
-		fb.printListFizzBuzz(1, 100);
-	}
-	
-	
-	
 }

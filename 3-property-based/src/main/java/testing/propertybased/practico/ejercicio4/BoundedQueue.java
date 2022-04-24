@@ -1,9 +1,12 @@
 package testing.propertybased.practico.ejercicio4;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 //Introduction to Software Testing
 //Authors: Paul Ammann & Jeff Offutt
 
-public class BoundedQueue
+public class BoundedQueue implements Iterable<Object>
 { 
 	// Overview:  a BoundedQueue is a mutable, bounded FIFO data structure
 	// of fixed size , with size being set in the constructor
@@ -21,6 +24,24 @@ public class BoundedQueue
 		this.capacity = capacity;
 		elements = new Object [capacity];
 		size  = 0; front = 0; back  = 0;
+	}
+	
+	public BoundedQueue ( Collection<?> c, int capacity ) {
+		if( capacity < 0 ) {
+			throw new IllegalArgumentException ("BoundedQueue.constructor");
+		}else if( c.size() > capacity ) {
+			throw new IllegalArgumentException ("BoundedQueue.constructor");
+		}
+		
+		this.capacity = capacity;
+		elements = new Object [capacity];
+		size  = 0; front = 0; back  = 0;
+		
+		for( Object o : c ) {
+			size++;
+			elements [back] = o;
+			back = (back+1) % capacity;
+		}
 	}
 
 	public void enQueue (Object o)
@@ -80,6 +101,15 @@ public class BoundedQueue
 		}
 		result += "]";
 		return result;
+	}
+	
+	public int size() {
+		return size;
+	}
+
+	@Override
+	public Iterator<Object> iterator() {
+		return new BoundedQueueIterator( elements, size, front, capacity );
 	}
 
 }

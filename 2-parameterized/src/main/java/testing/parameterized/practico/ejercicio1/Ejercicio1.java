@@ -35,7 +35,7 @@ public class Ejercicio1 {
 	 */
 	public static int lastZero (int[] x)
 	{
-		for (int i = 0; i < x.length; i++)
+		for (int i = x.length - 1; i >= 0; i--)
 		{
 			if (x[i] == 0)
 			{
@@ -60,7 +60,7 @@ public class Ejercicio1 {
 		// Better yet, is should be a foreach loop,
 		// which eliminates the possibility of the fencepost fault:
 		// for (int i:x) { if (x==0) count++; }
-		for (int i = 1; i < x.length; i++)
+		for (int i = 0; i < x.length; i++)
 		{
 			if (x[i] == 0) count++;
 		}

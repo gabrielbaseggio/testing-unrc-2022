@@ -1,8 +1,10 @@
 package testing.propertybased.teoria;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+
+
 import static org.assertj.core.api.Assumptions.assumeThat;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -1,6 +1,7 @@
 package testing.propertybased.teoria;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.assertj.core.api.Assumptions.assumeThat;
 
 import java.util.Arrays;
