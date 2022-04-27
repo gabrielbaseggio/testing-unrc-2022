@@ -28,7 +28,18 @@ task cucumber() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty', '--glue', 'teoria.tutorial', 'src/test/resources']
+            args = ['--plugin', 'pretty', '--glue', 'teoria.tutorial', 'src/test/resources/ejemplo']
+        }
+    }
+}
+
+task acceptance() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'games.tiktaktoe', 'src/test/resources/tiktaktoe']
         }
     }
 }
