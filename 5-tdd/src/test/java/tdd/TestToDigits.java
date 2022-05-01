@@ -16,7 +16,8 @@ public class TestToDigits {
 		"10, 10",
 		"11, 11",
 		"100, 100",
-		"101, 101"
+		"101, 101",
+		"1000, 1000"
 	})
 	public void toDigitsParameterizedTest( String s, int expected ) {
 		assertEquals( Digits.toDigits( s ), expected );

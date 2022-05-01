@@ -12,23 +12,16 @@ public class Digits {
 	}
 
 	public static int toDigits(String numbers) {
-		/*if( numbers.equals("1") ) return 1;
-		if( numbers.equals("2") ) return 2;
-		if( numbers.equals("10") ) return 10;
-		if( numbers.equals("11") ) return 11;
-		if( numbers.equals("100") ) return 100;
-		if( numbers.equals("101") ) return 101;*/
 		
-		if( numbers.length() == 1 ) {
-			return toDigit( numbers.charAt(0) );
-		}
-		
-		if( numbers.length() == 2 ) {
-			return toDigit( numbers.charAt(0) ) * 10 + toDigit( numbers.charAt(1) );
-		}
-		
-		if( numbers.length() == 3 ) {
-			return toDigit( numbers.charAt(0) ) * 10 * 10 + toDigit( numbers.charAt(1) ) * 10 + toDigit( numbers.charAt(2) );
+		if( numbers.length() > 0 ) {
+			int i = 0;
+			int result = 0;
+			while( numbers.length() - i != 0 ) {
+				result = result + toDigit( numbers.charAt( i ) ) * MyMath.pow( 10, numbers.length() - (i + 1) ) ;
+				i++;
+			}
+			
+			return result;
 		}
 		
 		return 0;

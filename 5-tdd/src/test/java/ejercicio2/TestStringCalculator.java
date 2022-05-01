@@ -3,6 +3,8 @@ package ejercicio2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class TestStringCalculator {
     @Test
@@ -10,18 +12,17 @@ public class TestStringCalculator {
     	assertEquals( StringCalculator.Add( "" ), 0 );
     }
     
-    @Test
-    public void StringCalculatorOne() {
-    	assertEquals( StringCalculator.Add( "1" ), 1 );
-    }
-    
-    @Test
-    public void StringCalculatorTwo() {
-    	assertEquals( StringCalculator.Add( "2" ), 2 );
-    }
-    
-    @Test
-    public void StringCalculatorThree() {
-    	assertEquals( StringCalculator.Add( "3" ), 3 );
+    @ParameterizedTest
+    @CsvSource({
+    	"1,1",
+    	"2,2",
+    	"3,3",
+    	"'1,2',3",
+    	"'2,1',3",
+    	"'1,2,3', 6",
+    	"'4,5,6', 15"
+    })
+    public void StringCalculatorParameterizedTest( String s, int expected ) {
+    	assertEquals( StringCalculator.Add( s ), expected );
     }
 }
