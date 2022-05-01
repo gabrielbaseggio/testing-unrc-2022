@@ -3,17 +3,21 @@ package games.tiktaktoe;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.messages.internal.com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StepDefinitiosNumberOfTokens {
 	
 	TikTakToe tiktaktoe;
 	Token token;
+	boolean gameIsOver;
 	int nTokens;
 
 	@Given("that the app has been initialized")
@@ -81,11 +85,23 @@ public class StepDefinitiosNumberOfTokens {
 	    assertEquals( token, Token.X );
 	}
 
-	@Given("that the board is in the state")
-	public void that_the_board_is_in_the_state(io.cucumber.datatable.DataTable dataTable) {
-	    List<Token> tokenList = dataTable.asList( Token.class );
-	    tiktaktoe = new TikTakToe( tokenList );
+	@When("I ask the system if the game is over")
+	public void i_ask_the_system_if_the_game_is_over() {
+	    gameIsOver = tiktaktoe.gameIsOver();
+	}
+	
+	@ParameterType("true|false")
+	public Boolean booleanValue( String value ) {
+		return Boolean.valueOf( value );
+	}
+	
+	@Then("I should get {booleanValue}")
+	public void i_should_get( Boolean value ) {
+	    assertEquals( gameIsOver, value );
 	}
 
-
+	@When("I ask the system who's the winner")
+	public void i_ask_the_system_who_s_the_winner() {
+	    token = tiktaktoe.whosTheWinner();
+	}
 }
