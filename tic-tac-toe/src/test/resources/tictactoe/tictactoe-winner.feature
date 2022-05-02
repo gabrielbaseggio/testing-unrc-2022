@@ -8,6 +8,6 @@ Escenario: Ganar el juego
   Cuando el jugador X pone una ficha en la celda (0,0)
   Y el jugador O pone una ficha en la celda (0,1)
   Y el jugador X pone una ficha en la celda (1,1)
-  Y el jugador X pone una ficha en la celda (0,2)
+  Y el jugador O pone una ficha en la celda (0,2)
   Y el jugador X pone una ficha en la celda (2,2)
   Entonces el jugador X es el ganador
