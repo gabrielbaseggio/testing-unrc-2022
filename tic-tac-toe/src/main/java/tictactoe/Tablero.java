@@ -2,7 +2,7 @@ package tictactoe;
 
 public class Tablero {
 	
-	Ficha[][] tablero = new Ficha[3][3];
+	Ficha[][] tablero  = new Ficha[3][3];
 	private int fichas = 0;
 
 	public boolean esVacio() {
@@ -18,6 +18,19 @@ public class Tablero {
 		
 		tablero[i][j] = x;
 		fichas++;
+	}
+
+	public boolean lleno() {
+		return fichas == 9;
+	}
+
+	public boolean hayFichaEnLaPosicion(int x, int y) {
+		if( tablero[x][y] != null ) return true;
+		return false;
+	}
+
+	public Ficha ficha(int x, int y) {
+		return tablero[x][y];
 	}
 
 }

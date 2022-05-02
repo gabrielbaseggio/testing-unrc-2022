@@ -10,7 +10,7 @@ Implementar tablero:
   - poner ficha en 
   - vacío
   - lleno
-  - hay ficha en un posición
+  - hay ficha en la posicion
 
 
 
@@ -24,3 +24,19 @@ X Crear un tablero de 3x3 vacío
 X Crear un tablero no vacío
 X Poner una ficha arriba de otra
 
+X lleno ([X,O,X,
+          O,X,O,
+          O,X,O]) = true
+X hayFichaEnLaPosicion([_,_,_,
+                        O,X,O,
+                        O,X,O], 0, 0) = false
+X hayFichaEnLaPosicion([_,_,_,
+                        O,X,O,
+                        O,X,O], 1, 0) = true
+X ficha([_,_,X,
+         _,_,O,
+         _,_,_], 0, 2) = X
+         
+- dado que X es jugador inicial entonces jugadorActual() = X
+- dado que X es jugador inicial y X hizo su movimiento entonces jugadorActual() = O
+- dado que X es jugador inicial y X hizo su movimiento y O hizo su movimiento entonces jugadorActual() = X

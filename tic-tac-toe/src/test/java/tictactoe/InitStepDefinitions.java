@@ -1,14 +1,12 @@
 package tictactoe;
 
+import io.cucumber.java.ParameterType;
+
 import io.cucumber.java.ast.Cuando;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class InitStepDefinitions {
@@ -37,13 +35,8 @@ public class InitStepDefinitions {
 		juego.iniciarJuego();
 	}
 
-	@Dado("es el turno del jugador {int}")
-	public void es_el_turno_del_jugador(Integer player) {
-
-	}
-
-	@Dado("el jugador {int} juega con las {string}")
-	public void el_jugador_juega_con_las_x(Integer player, String ficha) {
+	@Dado("es el turno del jugador {ficha}")
+	public void es_el_turno_del_jugador(Ficha player) {
 
 	}
 
@@ -52,19 +45,25 @@ public class InitStepDefinitions {
 
 	}
 
-	@Cuando("el jugador {int} pone una ficha en la celda \\({int},{int}\\)")
-	public void el_jugador_pone_una_ficha_en_la_celda(int x, int y) {
+	@Cuando("el jugador {ficha} pone una ficha en la celda \\({int},{int}\\)")
+	public void el_jugador_pone_una_ficha_en_la_celda(Ficha ficha, int x, int y) {
 		//juego.colocarFichaEn(Ficha.X, x, y);
 		juego.jugarEn(x, y);
 	}
 
-	@Entonces("el tablero tiene una {string} en la celda \\({int},{int}\\)")
-	public void el_tablero_tiene_una_x_en_la_celda(String ficha, int x, int y) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	@Entonces("el tablero tiene una {ficha} en la celda \\({int},{int}\\)")
+	public void el_tablero_tiene_una_x_en_la_celda(Ficha ficha, int x, int y) {
+	    assertEquals( juego.ficha(x,y), ficha );
 	}
 	
-	
-	
-	
+	@Dado("el jugador inicial es {ficha}")
+	public void el_jugador_inicial_es( Ficha ficha ) {
+	    juego.jugadorInicial( ficha );
+	}
+
+
+	@ParameterType("X|O")
+	public Ficha ficha( String valor ) {
+		return Ficha.valueOf( valor );
+	}
 }
