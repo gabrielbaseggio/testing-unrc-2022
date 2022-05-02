@@ -1,19 +1,13 @@
 package games.tiktaktoe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.internal.com.fasterxml.jackson.databind.ObjectMapper;
 
-public class StepDefinitiosNumberOfTokens {
+public class StepDefinitions {
 	
 	TikTakToe tiktaktoe;
 	Token token;
@@ -35,8 +29,8 @@ public class StepDefinitiosNumberOfTokens {
 	    assertEquals( nTokens, int1 );
 	}
 	
-	@Given("I put an X in the position {int} {int}")
-	public void i_put_an_x_in_the_position(Integer int1, Integer int2) {
+	@Given("I put an {tokenValue} in the position {int} {int}")
+	public void i_put_an_x_in_the_position(Token token, Integer int1, Integer int2) {
 	    tiktaktoe.put(int1, int2);
 	}
 	
@@ -44,25 +38,15 @@ public class StepDefinitiosNumberOfTokens {
 	public void i_ask_the_system_for_the_position(Integer int1, Integer int2) {
 	    token = tiktaktoe.get(int1, int2);
 	}
-
-	@Then("I should get that the position {int} {int} is occupied")
-	public void i_should_get_that_the_position_is_occupied(Integer int1, Integer int2) {
-	    assertFalse( token.equals( Token.IDDLE ) );
+	
+	@Then("I should get that the position {int} {int} is occupied by an {tokenValue}")
+	public void i_should_get_that_the_poisition_is_occupied_by_an(Integer int1, Integer int2, Token tokenValue) {
+	    assertEquals( token, tokenValue );
 	}
 	
-	@When("I put an O in the position {int} {int}")
-	public void i_put_an_o_in_the_position(Integer int1, Integer int2) {
-	    tiktaktoe.put(int1, int2);
-	}
-	
-	@Then("I should get that the poisition {int} {int} is occupied by an X")
-	public void i_should_get_that_the_poisition_is_occupied_by_an_x(Integer int1, Integer int2) {
-	    assertEquals( token, Token.X );
-	}
-	
-	@Given("I tell the system that player X is the starting player")
-	public void i_tell_the_system_that_player_x_is_the_starting_player() {
-	    tiktaktoe.setStartingPlayer( Token.X );
+	@Given("I tell the system that player {tokenValue} is the starting player")
+	public void i_tell_the_system_that_player_is_the_starting_player( Token tokenValue ) {
+	    tiktaktoe.setStartingPlayer( tokenValue );
 	}
 	
 	@When("I ask the system who's the current player")
@@ -70,19 +54,9 @@ public class StepDefinitiosNumberOfTokens {
 	    token = tiktaktoe.currentPlayer();
 	}
 	
-	@Then("I should get an O")
-	public void i_should_get_an_o() {
-	    assertEquals( token, Token.O );
-	}
-	
-	@Given("I tell the system that player O is the starting player")
-	public void i_tell_the_system_that_player_o_is_the_starting_player() {
-	    tiktaktoe.setStartingPlayer( Token.O );
-	}
-	
-	@Then("I should get an X")
-	public void i_should_get_an_x() {
-	    assertEquals( token, Token.X );
+	@Then("I should get an {tokenValue}")
+	public void i_should_get_an( Token tokenValue ) {
+	    assertEquals( token, tokenValue );
 	}
 
 	@When("I ask the system if the game is over")
@@ -93,6 +67,11 @@ public class StepDefinitiosNumberOfTokens {
 	@ParameterType("true|false")
 	public Boolean booleanValue( String value ) {
 		return Boolean.valueOf( value );
+	}
+	
+	@ParameterType("X|O|IDDLE")
+	public Token tokenValue( String value ) {
+		return Token.valueOf( value );
 	}
 	
 	@Then("I should get {booleanValue}")
