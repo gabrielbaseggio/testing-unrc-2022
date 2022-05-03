@@ -162,4 +162,43 @@ public class TestTaTeTi {
 		 */
 		assertTrue( tateti.termino() );
 	}
+	
+	@Test
+	void ganador1() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		tateti.jugadorInicial( Ficha.X );
+		tateti.jugarEn(0, 2);
+		tateti.jugarEn(0, 0);
+		tateti.jugarEn(1, 1);
+		tateti.jugarEn(0, 1);
+		tateti.jugarEn(2, 0);
+		assertEquals( tateti.ganador(), Ficha.X );
+	}
+	
+	@Test
+	void ganador2() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		tateti.jugadorInicial( Ficha.X );
+		tateti.jugarEn(0, 0);
+		tateti.jugarEn(0, 1);
+		tateti.jugarEn(1, 1);
+		tateti.jugarEn(0, 2);
+		tateti.jugarEn(2, 2);
+		assertEquals( tateti.ganador(), Ficha.X );
+	}
+	
+	@Test
+	void ganador3() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		tateti.jugadorInicial( Ficha.O );
+		tateti.jugarEn(0, 0);
+		tateti.jugarEn(1, 1);
+		tateti.jugarEn(0, 1);
+		tateti.jugarEn(1, 2);
+		tateti.jugarEn(0, 2);
+		assertEquals( tateti.ganador(), Ficha.O );
+	}
 }

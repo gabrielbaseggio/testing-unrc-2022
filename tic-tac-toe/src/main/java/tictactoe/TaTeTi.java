@@ -60,7 +60,11 @@ public class TaTeTi {
 	}
 
 	public Ficha ganador() {
-		// TODO Auto-generated method stub
+		if( tablero.ficha(0, 0) != null && tablero.ficha(0, 0).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(2, 2) ) ) return tablero.ficha(0, 0);
+		if( tablero.ficha(0, 2) != null && tablero.ficha(0, 2).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(2, 0) ) ) return tablero.ficha(2, 0);
+		
+		if( tablero.ficha(0, 0) != null && tablero.ficha(0, 0).equals( tablero.ficha(0, 1) ) && tablero.ficha(0, 1).equals( tablero.ficha(0, 2) ) ) return tablero.ficha(0, 0);
+		
 		return null;
 	}
 

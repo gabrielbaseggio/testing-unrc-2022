@@ -78,15 +78,15 @@ fin tests para metodo termino
 metodo ganador
 ==============
           
-- ganador(|O|O|X|
+X ganador(|O|O|X|
           | |X| |
           |X| | |) = X
 	  
-- ganador(|X|O|O|
+X ganador(|X|O|O|
           | |X| |
           | | |X|) = X
 	 
-- ganador(|O|O|O|
+X ganador(|O|O|O|
           | |X|X|
           | | | |) = O
 	  
