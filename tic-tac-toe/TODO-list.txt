@@ -90,17 +90,14 @@ X ganador(|O|O|O|
           | |X|X|
           | | | |) = O
 	  
-- termino(| |X|X|
+X termino(| |X|X|
           |O|O|O|
           | | | |) = O
+          
+X termino(|X|O| |
+          |X|O| |
+          |X| | |) = O
 	  
-- termino(|X|O|O|
-          |X| | |
-          | | | |) = nadie
-	  
-- termino(|X|O|X|
-          |X|O|X|
-          |O|X|O|) = nadie
           
 fin test para metodo ganador
 ============================
