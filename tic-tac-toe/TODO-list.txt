@@ -41,6 +41,9 @@ X dado que X es jugador inicial entonces jugadorActual() = X
 X dado que X es jugador inicial y X hizo su movimiento entonces jugadorActual() = O
 X dado que X es jugador inicial y X hizo su movimiento y O hizo su movimiento entonces jugadorActual() = X
 
+metodo termino
+==============
+
 X termino(|O|O|X|
           | |X| |
           |X| | |) = true
@@ -68,3 +71,36 @@ X termino(|O|X| |
 X termino(|X|O|X|
           |X|O|X|
           |O|X|O|) = true
+          
+fin tests para metodo termino        
+=============================
+
+metodo ganador
+==============
+          
+- ganador(|O|O|X|
+          | |X| |
+          |X| | |) = X
+	  
+- ganador(|X|O|O|
+          | |X| |
+          | | |X|) = X
+	 
+- ganador(|O|O|O|
+          | |X|X|
+          | | | |) = O
+	  
+- termino(| |X|X|
+          |O|O|O|
+          | | | |) = O
+	  
+- termino(|X|O|O|
+          |X| | |
+          | | | |) = nadie
+	  
+- termino(|X|O|X|
+          |X|O|X|
+          |O|X|O|) = nadie
+          
+fin test para metodo ganador
+============================
