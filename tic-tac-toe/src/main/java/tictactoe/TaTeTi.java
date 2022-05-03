@@ -38,4 +38,30 @@ public class TaTeTi {
 		return tablero.ficha( x, y );
 	}
 
+	public boolean termino() {
+		if( tablero.ficha(0, 0) != null && tablero.ficha(0, 0).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(2, 2) ) ) return true;
+		if( tablero.ficha(0, 2) != null && tablero.ficha(0, 2).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(2, 0) ) ) return true;
+		
+		//if( tablero.ficha(0, 0) != null && tablero.ficha(0, 0).equals( tablero.ficha(0, 1) ) && tablero.ficha(0, 1).equals( tablero.ficha(0, 2) ) ) return true;
+		//if( tablero.ficha(1, 0) != null && tablero.ficha(1, 0).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(1, 2) ) ) return true;
+		//refactorizacion
+		for( int row = 0; row < 3; row++ ) {
+			if( tablero.ficha(row, 0) != null && tablero.ficha(row, 0).equals( tablero.ficha(row, 1) ) && tablero.ficha(row, 1).equals( tablero.ficha(row, 2) ) ) return true;
+		}
+		
+		//if( tablero.ficha(0, 0) != null && tablero.ficha(0, 0).equals( tablero.ficha(1, 0) ) && tablero.ficha(1, 0).equals( tablero.ficha(2, 0) ) ) return true;
+		//if( tablero.ficha(0, 1) != null && tablero.ficha(0, 1).equals( tablero.ficha(1, 1) ) && tablero.ficha(1, 1).equals( tablero.ficha(2, 1) ) ) return true;
+		//refactorizacion
+		for( int col = 0; col < 3; col++ ) {
+			if( tablero.ficha(0, col) != null && tablero.ficha(0, col).equals( tablero.ficha(1, col) ) && tablero.ficha(1, col).equals( tablero.ficha(2, col) ) ) return true;
+		}
+		
+		return tablero.lleno();
+	}
+
+	public Ficha ganador() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

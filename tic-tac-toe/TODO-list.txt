@@ -37,6 +37,34 @@ X ficha([_,_,X,
          _,_,O,
          _,_,_], 0, 2) = X
          
-- dado que X es jugador inicial entonces jugadorActual() = X
-- dado que X es jugador inicial y X hizo su movimiento entonces jugadorActual() = O
-- dado que X es jugador inicial y X hizo su movimiento y O hizo su movimiento entonces jugadorActual() = X
+X dado que X es jugador inicial entonces jugadorActual() = X
+X dado que X es jugador inicial y X hizo su movimiento entonces jugadorActual() = O
+X dado que X es jugador inicial y X hizo su movimiento y O hizo su movimiento entonces jugadorActual() = X
+
+X termino(|O|O|X|
+          | |X| |
+          |X| | |) = true
+	  
+X termino(|X|O|O|
+          | |X| |
+          | | |X|) = true
+	 
+X termino(|X|X|X|
+          | |O|O|
+          | | | |) = true
+	  
+X termino(| |O|O|
+          |X|X|X|
+          | | | |) = true
+	  
+X termino(|X|O|O|
+          |X| | |
+          |X| | |) = true
+	  
+X termino(|O|X| |
+          |O|X| |
+          | |X| |) = true
+	  
+X termino(|X|O|X|
+          |X|O|X|
+          |O|X|O|) = true

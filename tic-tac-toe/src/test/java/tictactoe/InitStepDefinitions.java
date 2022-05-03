@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class InitStepDefinitions {
 	
 	TaTeTi juego;
+	Ficha ganador;
+	boolean juegoTerminado;
 	
 	@Dado("que la aplicación ha sido iniciada")
 	public void que_la_aplicacion_ha_sido_iniciada() {
@@ -60,10 +62,41 @@ public class InitStepDefinitions {
 	public void el_jugador_inicial_es( Ficha ficha ) {
 	    juego.jugadorInicial( ficha );
 	}
+	
+	@Dado("el estado del juego es el siguiente")
+	public void el_estado_del_juego_es_el_siguiente(io.cucumber.datatable.DataTable dataTable) {
+	    
+	}
+	
+	@Cuando("le pregunto al sistema si el juego termino")
+	public void le_pregunto_al_sistema_si_el_juego_termino() {
+	    juegoTerminado = juego.termino();
+	}
+	
+	@Cuando("le pregunto al sistema quien es el ganador")
+	public void le_pregunto_al_sistema_quien_es_el_ganador() {
+	    ganador = juego.ganador();
+	}
+	
+	@Entonces("deberia obtener {valorBooleano}")
+	public void deberia_obtener( boolean valorBooleano ) {
+	    
+	}
+	
+	@Entonces("deberia obtener {ficha}")
+	public void deberia_obtener( Ficha ficha ) {
+	    
+	}
+
 
 
 	@ParameterType("X|O")
 	public Ficha ficha( String valor ) {
 		return Ficha.valueOf( valor );
+	}
+	
+	@ParameterType("true|false")
+	public boolean valorBooleano( String valor ) {
+		return Boolean.getBoolean( valor );
 	}
 }
