@@ -201,4 +201,17 @@ public class TestTaTeTi {
 		tateti.jugarEn(0, 2);
 		assertEquals( tateti.ganador(), Ficha.O );
 	}
+	
+	@Test
+	void ganador4() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		tateti.jugadorInicial( Ficha.O );
+		tateti.jugarEn(1, 0);
+		tateti.jugarEn(0, 1);
+		tateti.jugarEn(1, 1);
+		tateti.jugarEn(0, 2);
+		tateti.jugarEn(1, 2);
+		assertEquals( tateti.ganador(), Ficha.O );
+	}
 }
