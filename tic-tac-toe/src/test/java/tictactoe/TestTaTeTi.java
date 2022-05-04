@@ -1,9 +1,13 @@
 package tictactoe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class TestTaTeTi {
 	@Test
@@ -227,4 +231,5 @@ public class TestTaTeTi {
 		tateti.jugarEn(2, 0);
 		assertEquals( tateti.ganador(), Ficha.X );
 	}
+	
 }

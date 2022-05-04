@@ -1,9 +1,26 @@
 package tictactoe;
 
+import java.util.List;
+
 public class Tablero {
 	
 	Ficha[][] tablero  = new Ficha[3][3];
 	private int fichas = 0;
+	
+	public Tablero() {}
+
+	public Tablero(List<List<String>> listaDeListas) {
+		for( int row = 0; row < 3; row++ ) {
+			for( int col = 0; col < 3; col++ ) {
+				String stringFicha = listaDeListas.get( row ).get( col );
+				System.out.println( stringFicha );
+				if( stringFicha != null ) {
+					tablero[row][col] = Ficha.valueOf( stringFicha );
+					fichas++;
+				}
+			}
+		}
+	}
 
 	public boolean esVacio() {
 		return fichas == 0;

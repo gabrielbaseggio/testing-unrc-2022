@@ -1,6 +1,7 @@
 package tictactoe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.List;
+import java.util.LinkedList;
 
 public class TestTablero {
 
@@ -63,14 +67,24 @@ public class TestTablero {
 		assertEquals( t.hayFichaEnLaPosicion( i, j ), expected );
 	}
 	
-	@ParameterizedTest
-	@CsvSource({
-		"0,2,X"
-	})
-	void ficha( int x, int y, Ficha expected ) {
+	@Test
+	void ficha( int x, int y ) {
 		Tablero t = new Tablero();
 		t.ponerFicha(Ficha.X, 0, 2);
-		t.ponerFicha(Ficha.O, 1, 2);
-		assertEquals( t.ficha(x, y), expected );
+		assertEquals( t.ficha(0, 2), Ficha.X );
+	}
+	
+	@Test
+	void crearTableroConListaDeListas() {
+		List<List<String>> listaDeListas = new LinkedList<>();
+		List<String> columnas    = new LinkedList<>();
+		columnas.add("X");
+		columnas.add("O");
+		columnas.add("X");
+		listaDeListas.add( columnas );
+		listaDeListas.add( columnas );
+		listaDeListas.add( columnas );
+		Tablero t = new Tablero( listaDeListas );
+		assertFalse( t.esVacio() );
 	}
 }
