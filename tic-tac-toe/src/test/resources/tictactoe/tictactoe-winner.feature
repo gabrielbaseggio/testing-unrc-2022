@@ -12,7 +12,7 @@ Escenario: Ganar el juego
   Cuando el jugador X pone una ficha en la celda (2,2)
   Entonces el juego termino
   Y X es el ganador
-  Y el estado del juego es el siguiente
+  Y el juego queda como
   | X | O |   |
   |   | X | O |
   |   |   | X |

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Tablero {
 	
-	Ficha[][] tablero  = new Ficha[3][3];
+	private Ficha[][] tablero  = new Ficha[3][3];
 	private int fichas = 0;
 	
 	public Tablero() {}
@@ -48,6 +48,21 @@ public class Tablero {
 
 	public Ficha ficha(int x, int y) {
 		return tablero[x][y];
+	}
+	
+	@Override
+	public boolean equals( Object obj ) {
+		if( obj == null ) return false;
+		if( this == obj ) return true;
+		if( this.getClass() != obj.getClass() ) return false;
+		Tablero other = (Tablero) obj;
+		boolean equals = true;
+		for( int row = 0; row < 3 && equals; row++ ) {
+			for( int col = 0; col < 3 && equals; col++ ) {
+				equals = equals && tablero[row][col] == other.tablero[row][col];
+			}
+		}
+		return equals;
 	}
 
 }

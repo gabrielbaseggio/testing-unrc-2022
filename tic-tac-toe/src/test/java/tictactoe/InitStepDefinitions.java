@@ -103,6 +103,20 @@ public class InitStepDefinitions {
 	public void el_jugador_actual_es( Ficha jugador ) {
 	    jugadorActual = jugador;
 	}
+	
+	@Entonces("el juego queda como")
+	public void el_juego_queda_como(io.cucumber.datatable.DataTable dataTable) {
+	    // Write code here that turns the phrase above into concrete actions
+	    // For automatic transformation, change DataTable to one of
+	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+	    //
+	    // For other transformations you can register a DataTableType.
+		List<List<String>> listaDeListas = dataTable.asLists();
+		Tablero tablero = juego.tablero();
+		assertEquals( tablero, new Tablero( listaDeListas ) );
+	}
 
 
 	@ParameterType("X|O")

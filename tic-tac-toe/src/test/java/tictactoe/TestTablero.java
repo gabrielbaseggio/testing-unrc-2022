@@ -87,4 +87,24 @@ public class TestTablero {
 		Tablero t = new Tablero( listaDeListas );
 		assertFalse( t.esVacio() );
 	}
+	
+	@Test
+	void tableroEquals1() {
+		Tablero t1 = new Tablero();
+		Tablero t2 = new Tablero();
+		assertTrue( t1.equals( t2 ) );
+	}
+	
+	@Test
+	void tableroEquals2() {
+		Tablero t1 = new Tablero();
+		Tablero t2 = new Tablero();
+		t1.ponerFicha(Ficha.X, 0, 0);
+		t1.ponerFicha(Ficha.X, 0, 1);
+		t1.ponerFicha(Ficha.X, 0, 2);
+		t2.ponerFicha(Ficha.X, 0, 0);
+		t2.ponerFicha(Ficha.X, 0, 1);
+		t2.ponerFicha(Ficha.X, 0, 2);
+		assertTrue( t1.equals( t2 ) );
+	}
 }
