@@ -4,6 +4,7 @@ public class Game {
 	
 	private int score = 0;
 	private int[] rolls = new int[21];
+	private Frame[] frames = new Frame[10];
 	private int movement = 0;
 	
 	public void roll( int pins ) {
