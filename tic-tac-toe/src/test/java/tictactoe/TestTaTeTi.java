@@ -1,7 +1,7 @@
 package tictactoe;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -35,6 +35,38 @@ public class TestTaTeTi {
 		tateti.jugarEn(0, 0);
 		tateti.jugarEn(0, 1);
 		assertEquals( tateti.jugadorActual(), Ficha.X );
+	}
+	
+	@Test
+	void ponerFichaTest1() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		Tablero tablero = new Tablero();
+		tablero.ponerFicha(Ficha.X, 0, 2);
+		tablero.ponerFicha(Ficha.O, 1, 2);
+		/**
+		 * | | |X|
+		 * | | |O|
+		 * | | | |
+		 */
+		tateti.cargarJuego(tablero, Ficha.X);
+		assertFalse(tateti.jugarEn(1, 2));
+	}
+	
+	@Test
+	void ponerFichaTest2() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		Tablero tablero = new Tablero();
+		tablero.ponerFicha(Ficha.X, 0, 2);
+		tablero.ponerFicha(Ficha.O, 1, 2);
+		/**
+		 * | | |X|
+		 * | | |O|
+		 * | | | |
+		 */
+		tateti.cargarJuego(tablero, Ficha.X);
+		assertFalse(tateti.jugarEn(3, 3));
 	}
 	
 	@Test
@@ -230,6 +262,81 @@ public class TestTaTeTi {
 		tateti.jugarEn(1, 1);
 		tateti.jugarEn(2, 0);
 		assertEquals( tateti.ganador(), Ficha.X );
+	}
+	
+	@Test
+	void cargarJuego1() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		List<List<String>> listaDeListas = new LinkedList<>();
+		List<String> lista    = new LinkedList<>();
+		lista.add("X");
+		lista.add("X");
+		lista.add("X");
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add("O");
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add(null);
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		
+		Tablero tablero = new Tablero( listaDeListas );
+		assertFalse( tateti.cargarJuego( tablero, Ficha.O ) );
+	}
+	
+	@Test
+	void cargarJuego2() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		List<List<String>> listaDeListas = new LinkedList<>();
+		List<String> lista    = new LinkedList<>();
+		lista.add("X");
+		lista.add("X");
+		lista.add(null);
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add("O");
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add(null);
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		
+		Tablero tablero = new Tablero( listaDeListas );
+		assertFalse( tateti.cargarJuego( tablero, Ficha.X ) );
+	}
+	
+	@Test
+	void cargarJuego3() {
+		TaTeTi tateti = new TaTeTi();
+		tateti.iniciarJuego();
+		List<List<String>> listaDeListas = new LinkedList<>();
+		List<String> lista    = new LinkedList<>();
+		lista.add("O");
+		lista.add("O");
+		lista.add(null);
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add("X");
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		lista = new LinkedList<>();
+		lista.add(null);
+		lista.add(null);
+		lista.add(null);
+		listaDeListas.add( lista );
+		
+		Tablero tablero = new Tablero( listaDeListas );
+		assertFalse( tateti.cargarJuego( tablero, Ficha.O ) );
 	}
 	
 }

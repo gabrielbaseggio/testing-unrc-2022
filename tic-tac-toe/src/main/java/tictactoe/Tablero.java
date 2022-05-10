@@ -5,7 +5,9 @@ import java.util.List;
 public class Tablero {
 	
 	private Ficha[][] tablero  = new Ficha[3][3];
-	private int fichas = 0;
+	private int fichas  = 0;
+	private int nroDeXs = 0;
+	private int nroDeOs = 0;
 	
 	public Tablero() {}
 
@@ -13,10 +15,9 @@ public class Tablero {
 		for( int row = 0; row < 3; row++ ) {
 			for( int col = 0; col < 3; col++ ) {
 				String stringFicha = listaDeListas.get( row ).get( col );
-				System.out.println( stringFicha );
 				if( stringFicha != null ) {
-					tablero[row][col] = Ficha.valueOf( stringFicha );
-					fichas++;
+					Ficha ficha = Ficha.valueOf( stringFicha );
+					actualizarEstado( row, col, ficha );
 				}
 			}
 		}
@@ -33,8 +34,7 @@ public class Tablero {
 							+ "que esta ocupada con %s", 
 							x, i, j, tablero[i][j]));
 		
-		tablero[i][j] = x;
-		fichas++;
+		actualizarEstado( i, j, x );
 	}
 
 	public boolean lleno() {
@@ -63,6 +63,24 @@ public class Tablero {
 			}
 		}
 		return equals;
+	}
+	
+	private void actualizarEstado( int row, int col, Ficha ficha ) {
+		tablero[row][col] = ficha;
+		if( ficha.equals( Ficha.X ) ) {
+			nroDeXs++;
+		} else {
+			nroDeOs++;
+		}
+		fichas++;
+	}
+
+	public int nroDeXs() {
+		return nroDeXs;
+	}
+
+	public int nroDeOs() {
+		return nroDeOs;
 	}
 
 }

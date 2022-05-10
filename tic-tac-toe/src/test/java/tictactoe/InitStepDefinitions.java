@@ -7,6 +7,7 @@ import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public class InitStepDefinitions {
 	Ficha ganador;
 	Ficha jugadorActual;
 	boolean juegoTerminado;
+	boolean jugadaValida;
+	boolean juegoValido;
 	
 	@Dado("que la aplicación ha sido iniciada")
 	public void que_la_aplicacion_ha_sido_iniciada() {
@@ -52,8 +55,7 @@ public class InitStepDefinitions {
 
 	@Cuando("el jugador {ficha} pone una ficha en la celda \\({int},{int}\\)")
 	public void el_jugador_pone_una_ficha_en_la_celda(Ficha ficha, int x, int y) {
-		//juego.colocarFichaEn(Ficha.X, x, y);
-		juego.jugarEn(x, y);
+		jugadaValida = juego.jugarEn(x, y);
 	}
 
 	@Entonces("el tablero tiene una {ficha} en la celda \\({int},{int}\\)")
@@ -106,16 +108,25 @@ public class InitStepDefinitions {
 	
 	@Entonces("el juego queda como")
 	public void el_juego_queda_como(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
 		List<List<String>> listaDeListas = dataTable.asLists();
 		Tablero tablero = juego.tablero();
 		assertEquals( tablero, new Tablero( listaDeListas ) );
+	}
+	
+	@Entonces("la jugada es invalida")
+	public void la_jugada_es_invalida() {
+	    assertFalse( jugadaValida );
+	}
+	
+	@Cuando("se carga el siguiente juego con jugador actual {ficha}")
+	public void se_carga_el_siguiente_juego_con_jugador_actual(Ficha ficha, io.cucumber.datatable.DataTable dataTable) {
+		List<List<String>> listaDeListas = dataTable.asLists();
+		juegoValido = juego.cargarJuego( new Tablero( listaDeListas ), ficha );
+	}
+	
+	@Entonces("el juego cargado es invalido")
+	public void el_juego_cargado_es_invalido() {
+	    
 	}
 
 

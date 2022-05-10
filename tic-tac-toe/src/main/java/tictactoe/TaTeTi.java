@@ -5,26 +5,25 @@ public class TaTeTi {
 	private Tablero tablero;
 	private Ficha jugadorActual;
 	private Ficha ganador;
-	private boolean juegoIniciado;
 
 	public void iniciarJuego() {
-		tablero       = new Tablero();
-		juegoIniciado = true;
-		// Inicializar tablero
+		tablero = new Tablero();
 	}
 
 	public boolean tableroVacio() {
 		return tablero.esVacio();
 	}
 
-	public void jugarEn(int x, int y) {
-		// Saber cual es el jugador actual y con que ficha juega
+	public boolean jugarEn(int x, int y) {
+		if( x < 0 || x > 2 || y < 0 || y > 2 || tablero.ficha(x, y) != null ) return false;
 		tablero.ponerFicha(jugadorActual(), x, y);
 		if( jugadorActual.equals( Ficha.X ) ) {
 			jugadorActual = Ficha.O;
 		} else {
 			jugadorActual = Ficha.X;
 		}
+		
+		return true;
 	}
 
 	public Ficha jugadorActual() {
@@ -68,9 +67,13 @@ public class TaTeTi {
 		return ganador;
 	}
 
-	public void cargarJuego(Tablero tablero, Ficha jugadorActual) {
+	public boolean cargarJuego(Tablero tablero, Ficha jugadorActual) {
+		if( Math.abs(tablero.nroDeXs() - tablero.nroDeOs()) > 1  ) return false;
+		if( tablero.nroDeXs() > tablero.nroDeOs() && jugadorActual.equals( Ficha.X ) ) return false;
+		if( tablero.nroDeOs() > tablero.nroDeXs() && jugadorActual.equals( Ficha.O ) ) return false;
 		this.tablero       = tablero;
 		this.jugadorActual = jugadorActual;
+		return true;
 	}
 
 	public Tablero tablero() {

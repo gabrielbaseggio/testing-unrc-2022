@@ -12,10 +12,6 @@ Implementar tablero:
   - lleno
   - hay ficha en la posicion
 
-
-
-
-
 Tests:
 ======
 
@@ -36,6 +32,24 @@ X hayFichaEnLaPosicion([_,_,_,
 X ficha([_,_,X,
          _,_,O,
          _,_,_], 0, 2) = X
+         
+X nroDeXs([X,_,_,
+           _,_,_,
+           _,_,_]) = 1
+           
+X nroDeXs([X,O,X,
+           _,_,_,
+           _,_,_]) = 2
+           
+X nroDeXs([X,O,X,
+           O,X,_,
+           _,_,_]) = 3
+         
+TaTeTi:
+
+X dado que x es el jugador actual entonces ponerFicha([_,_,X,
+                                                       _,_,O,
+                                                       _,_,_], 1, 2) = false
          
 X dado que X es jugador inicial entonces jugadorActual() = X
 X dado que X es jugador inicial y X hizo su movimiento entonces jugadorActual() = O
@@ -101,3 +115,17 @@ X termino(|X|O| |
           
 fin test para metodo ganador
 ============================
+
+metodo cargarJuego
+===================
+
+X cargarJuego(|X|X|X|
+              |O| | |
+              | | | |, O) = false
+              
+X cargarJuego(|X|X| |
+              |O| | |
+              | | | |, X) = false
+
+fin test metodo cargarJuego
+===================

@@ -68,7 +68,7 @@ public class TestTablero {
 	}
 	
 	@Test
-	void ficha( int x, int y ) {
+	void ficha() {
 		Tablero t = new Tablero();
 		t.ponerFicha(Ficha.X, 0, 2);
 		assertEquals( t.ficha(0, 2), Ficha.X );
@@ -106,5 +106,44 @@ public class TestTablero {
 		t2.ponerFicha(Ficha.X, 0, 1);
 		t2.ponerFicha(Ficha.X, 0, 2);
 		assertTrue( t1.equals( t2 ) );
+	}
+	
+	@Test
+	void nroDeXsTest1() {
+		Tablero tablero = new Tablero();
+		tablero.ponerFicha(Ficha.X, 0, 0);
+		/**
+		 * |X| | |
+		 * | | | |
+		 * | | | |
+		 */
+		assertEquals( tablero.nroDeXs(), 1 );
+	}
+	
+	@Test
+	void nroDeXsTest2() {
+		Tablero tablero = new Tablero();
+		tablero.ponerFicha(Ficha.X, 0, 0);
+		tablero.ponerFicha(Ficha.X, 0, 2);
+		/**
+		 * |X|O|X|
+		 * | | | |
+		 * | | | |
+		 */
+		assertEquals( tablero.nroDeXs(), 2 );
+	}
+	
+	@Test
+	void nroDeXsTest3() {
+		Tablero tablero = new Tablero();
+		tablero.ponerFicha(Ficha.X, 0, 0);
+		tablero.ponerFicha(Ficha.X, 0, 2);
+		tablero.ponerFicha(Ficha.X, 1, 1);
+		/**
+		 * |X| |X|
+		 * | |X| |
+		 * | | | |
+		 */
+		assertEquals( tablero.nroDeXs(), 3 );
 	}
 }
