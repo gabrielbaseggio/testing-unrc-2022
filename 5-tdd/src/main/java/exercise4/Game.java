@@ -24,7 +24,7 @@ public class Game {
 			s += rolls[i];
 		}
 		
-		System.out.println(s);
+		//System.out.println(s);
 		
 		int bonus = 0;
 		for( int i = 2; i < rolls.length; i+=2 ) {
@@ -33,17 +33,17 @@ public class Game {
 			}
 		}
 		
-		System.out.println(bonus);
+		//System.out.println(bonus);
 		
-		for( int i = 0; i < rolls.length; i++ ) {
-			if( rolls[i] == 10 ) {
-				System.out.println(i + 2 + " - " + rolls[i + 2]);
-				System.out.println(i + 3 + " - " + rolls[i + 3]);
-				bonus = bonus + rolls[i + 2] + rolls[i + 3];
-			}
-		}
+		//for( int i = 0; i < rolls.length; i++ ) {
+			//if( rolls[i] == 10 ) {
+				//System.out.println(i + 2 + " - " + rolls[i + 2]);
+				//System.out.println(i + 3 + " - " + rolls[i + 3]);
+				//bonus = bonus + rolls[i + 2] + rolls[i + 3];
+			//}
+		//}
 		
-		System.out.println(bonus);
+		//System.out.println(bonus);
 		return s + bonus;
 		// TODO
 	}
