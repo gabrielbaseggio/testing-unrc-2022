@@ -61,6 +61,15 @@ public class GameTest {
 		assertEquals( game.score(), 26 );
 	}
 	
+	@Test
+	void SpareInTheTenthFrame() {
+		rollNTimes( 18, 0 );
+		game.roll(5);
+		game.roll(5); // spare in tenth-frame, score in frame 10 = 10 + 8
+		game.roll(8); // roll extra ball
+		assertEquals( game.score(), 18 );
+	}
+	
 	private void rollNTimes( int n, int p ) {
 		for( int i = 0; i < n; i++ ) {
 			game.roll(p);
