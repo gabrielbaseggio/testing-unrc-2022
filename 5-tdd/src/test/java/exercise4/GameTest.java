@@ -61,37 +61,6 @@ public class GameTest {
 		assertEquals( game.score(), 26 );
 	}
 	
-	@Test
-	void SpareInTheTenthFrame() {
-		rollNTimes( 18, 0 );
-		game.roll(5);
-		game.roll(5); // spare in tenth-frame, score in frame 10 = 10 + 8
-		game.roll(8); // roll extra ball
-		assertEquals( game.score(), 18 );
-	}
-	
-	@Test
-	void bowlingGame() {
-		game.roll(10); // strike - score in frame 1 = 10 + 9 + 1 = 20
-		game.roll(9);
-		game.roll(1); // spare - score in frame 2 = 10 + 5 = 15 
-		game.roll(5);
-		game.roll(5); // spare - score in frame 3 = 10 + 7 = 17 
-		game.roll(7);
-		game.roll(2); // score in frame 4 = 7 + 2 = 9
-		game.roll(10); // strike - score in frame 5 = 10 + 10 + 10 = 30
-		game.roll(10); // strike - score in frame 6 = 10 + 10 + 9 = 29
-		game.roll(10); // strike - score in frame 7 = 10 + 9 + 0 = 19
-		game.roll(9);
-		game.roll(0); // score in frame 8 = 9 + 0 = 9
-		game.roll(8);
-		game.roll(2); // spare - score in frame 9 = 10 + 9 = 19
-		game.roll(9);
-		game.roll(1); // spare - score in frame 10 = 10 + 10 = 20 
-		game.roll(10);
-		assertEquals( game.score(), 187 );
-	}
-	
 	private void rollNTimes( int n, int p ) {
 		for( int i = 0; i < n; i++ ) {
 			game.roll(p);

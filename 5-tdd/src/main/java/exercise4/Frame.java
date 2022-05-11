@@ -8,15 +8,17 @@ public class Frame {
 	private int move = 0;
 
 	public int score() {
-		// TODO Auto-generated method stub
+		int bonus = 0;
 		if( strike() ) {
 			if( succesor.strike() ) {
-				return baseScore + succesor.fstMove() + succesor.succesor.fstMove();
+				bonus = succesor.moves[0] + succesor.succesor.moves[0];
 			} else {
-				return baseScore + succesor.fstMove() + succesor.sndMove();
+				bonus = succesor.moves[0] + succesor.moves[1];
 			}
 		}
-		return (spare())? baseScore + succesor.fstMove() : baseScore;
+		
+		if( spare() ) { bonus = succesor.moves[0]; }
+		return baseScore + bonus;
 	}
 
 	public void knockDown(int pins) {
@@ -30,16 +32,12 @@ public class Frame {
 
 	protected boolean spare() {
 		// TODO Auto-generated method stub
-		return !strike() && fstMove() + sndMove() == 10;
+		return !strike() && moves[0] + moves[1] == 10;
 	}
 	
 	protected boolean strike() {
 		// TODO Auto-generated method stub
-		return fstMove() == 10;
-	}
-	
-	protected int move() {
-		return move;
+		return moves[0] == 10;
 	}
 
 	public void setSuccesor(Frame succesor) {
@@ -50,32 +48,6 @@ public class Frame {
 	public boolean complete() {
 		if( baseScore == 10 || move == 2 ) return true;
 		return false;
-	}
-
-	protected int fstMove() {
-		// TODO Auto-generated method stub
-		return moves[0];
-	}
-
-	public int sndMove() {
-		// TODO Auto-generated method stub
-		return moves[1];
-	}
-	
-	protected void fstMove(int pins) {
-		moves[0] = pins;
-	}
-	
-	protected void sndMove(int pins) {
-		moves[move] = pins;
-	}
-	
-	protected void increaseMoves() {
-		move++;
-	}
-	
-	protected void baseScore(int pins) {
-		baseScore += pins;
 	}
 	
 }
