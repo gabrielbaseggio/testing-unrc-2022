@@ -67,6 +67,10 @@ public class BoundedQueue
 	{ 
 		return (size == capacity); 
 	}
+	
+	public int capacity() {
+		return capacity;
+	}
 
 	public String toString()
 	{
@@ -80,6 +84,13 @@ public class BoundedQueue
 		}
 		result += "]";
 		return result;
+	}
+
+	public Object get( int i ) {
+		if( !isEmpty() ) {
+			return elements[(front + i) % capacity];
+		}
+		return null;
 	}
 
 }
