@@ -3,11 +3,15 @@ package exercise4;
 public class Frame {
 	
 	private Frame succesor;
-	protected int baseScore = 0;
 	private int[] moves = new int[2];
-	private int move = 0;
+	protected int baseScore = 0;
+	private int move        = 0;
 
 	public int score() {
+		return baseScore + bonus();
+	}
+
+	private int bonus() {
 		int bonus = 0;
 		if( strike() ) {
 			if( succesor.strike() ) {
@@ -18,7 +22,7 @@ public class Frame {
 		}
 		
 		if( spare() ) { bonus = succesor.moves[0]; }
-		return baseScore + bonus;
+		return bonus;
 	}
 
 	public void knockDown(int pins) {
@@ -46,7 +50,7 @@ public class Frame {
 	}
 
 	public boolean complete() {
-		if( baseScore == 10 || move == 2 ) return true;
+		if( strike() || move == 2 ) return true;
 		return false;
 	}
 	

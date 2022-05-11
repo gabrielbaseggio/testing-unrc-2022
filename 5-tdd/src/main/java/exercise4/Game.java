@@ -6,7 +6,7 @@ public class Game {
 	private int currentFrame = 0;
 	
 	public Game() {
-		int currentFrame = 0;
+		int currentFrame;
 		for( currentFrame = 0; currentFrame < frames.length - 1; currentFrame++ ) {
 			frames[currentFrame] = new Frame();
 		}
