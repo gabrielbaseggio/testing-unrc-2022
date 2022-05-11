@@ -10,7 +10,11 @@ public class Frame {
 	public int score() {
 		// TODO Auto-generated method stub
 		if( strike() ) {
-			return baseScore + succesor.fstMove() + succesor.sndMove();
+			if( succesor.strike() ) {
+				return baseScore + succesor.fstMove() + succesor.succesor.fstMove();
+			} else {
+				return baseScore + succesor.fstMove() + succesor.sndMove();
+			}
 		}
 		return (spare())? baseScore + succesor.fstMove() : baseScore;
 	}
@@ -63,7 +67,7 @@ public class Frame {
 	}
 	
 	protected void sndMove(int pins) {
-		moves[1] = pins;
+		moves[move] = pins;
 	}
 	
 	protected void increaseMoves() {
