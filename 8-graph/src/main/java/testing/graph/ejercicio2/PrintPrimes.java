@@ -1,5 +1,9 @@
 package testing.graph.ejercicio2;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 // Introduction to Software Testing
 // Authors: Paul Ammann & Jeff Offutt
 // Chapter 7; page ??
@@ -50,10 +54,25 @@ public class PrintPrimes
             primes[numPrimes] = curPrime;
             numPrimes++;
          }
+         //n = 7
+         //primes = {2, 3, 5, 7}
+         //numPrimes = 4
+         //curPrime  = 11
+         //isPrime   = T
+         //i = 4
       }  // End while
    
    }  // end computePrimes 
    
+   public List<Integer> getPrimes(int n) {
+	   computePrimes(n);
+	   return Arrays.stream(primes)
+			      .limit(n)
+			      .boxed()
+			      .collect(Collectors.toList());
+   }
+   
+   /*
    public static void main (String []argv)
    {  // Driver method for printPrimes
       // Read an integer from standard input, call printPrimes()
@@ -82,4 +101,5 @@ public class PrintPrimes
       }
 
    }
+   */
 }

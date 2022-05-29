@@ -1,6 +1,7 @@
 package testing.graph.ejercicio3;
 
 // Introduction to Software Testing
+
 // Authors: Paul Ammann & Jeff Offutt
 // Chapter 7; page ??
 // Can be run from command line
@@ -22,7 +23,7 @@ public class Rewrap
    static final int betweenWord = 1;
    static final int lineBreak   = 2;
    static final int crFound     = 3;
-   static private String fmtRewrap (String S, int N)
+   static public String fmtRewrap (String S, int N)
    {
       int state = betweenWord;
       int lastSpace = -1;

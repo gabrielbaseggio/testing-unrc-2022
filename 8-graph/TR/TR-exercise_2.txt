@@ -1,0 +1,237 @@
+TRP = {
+1. [3,4,5,6,8,9,10,2,11]
+2. [4,5,6,8,9,10,2,3,4]
+3. [5,6,8,9,10,2,3,4,5]
+4. [3,4,5,6,8,9,10,2,3]
+5. [1,2,3,4,5,6,8,9,10]
+6. [2,3,4,5,6,8,9,10,2]
+7. [6,8,9,10,2,3,4,5,6]
+8. [8,9,10,2,3,4,5,6,8]
+9. [9,10,2,3,4,5,6,8,9]
+10. [10,2,3,4,5,6,8,9,10]
+11. [7,4,5,6,8,9,10,2,11]
+12. [6,8,9,10,2,3,4,5,7]
+13. [7,4,5,6,8,9,10,2,3]
+14. [4,5,6,8,10,2,3,4]
+15. [5,7,4,8,9,10,2,3]
+16. [5,6,8,10,2,3,4,5]
+17. [3,4,5,6,8,10,2,11]
+18. [1,2,3,4,5,6,8,10]
+19. [2,3,4,5,6,8,10,2]
+20. [3,4,5,6,8,10,2,3]
+21. [5,7,4,8,9,10,2,11]
+22. [8,10,2,3,4,5,6,8]
+23. [10,2,3,4,5,6,8,10]
+24. [7,4,5,6,8,10,2,11]
+25. [6,8,10,2,3,4,5,6]
+26. [6,8,10,2,3,4,5,7]
+27. [7,4,5,6,8,10,2,3]
+28. [4,8,9,10,2,3,4]
+29. [3,4,8,9,10,2,11]
+30. [1,2,3,4,8,9,10]
+31. [2,3,4,8,9,10,2]
+32. [3,4,8,9,10,2,3]
+33. [5,7,4,8,10,2,3]
+34. [8,9,10,2,3,4,8]
+35. [10,2,3,4,8,9,10]
+36. [9,10,2,3,4,8,9]
+37. [5,7,4,8,10,2,11]
+38. [3,4,8,10,2,11]
+39. [3,4,8,10,2,3]
+40. [4,8,10,2,3,4]
+41. [1,2,3,4,8,10]
+42. [1,2,3,4,5,7]
+43. [2,3,4,8,10,2]
+44. [8,10,2,3,4,8]
+45. [10,2,3,4,8,10]
+46. [4,5,7,4]
+47. [5,7,4,5]
+48. [7,4,5,7]
+49. [1,2,11]
+} U TRE
+
+TRE = {
+(1, 2) 
+(2, 3) 
+(2, 11) 
+(3, 4) 
+(4, 5) 
+(4, 8) 
+(5, 6)
+(5, 7) 
+(6, 8)
+(7, 4) 
+(8, 9) 
+(8, 10) 
+(9, 10) 
+(10, 2) 
+}
+
+TRN = {
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+11 
+}
+
+d) Listar caminos de test que logren cobertura de nodos pero no de arcos en el grafo.
+De ser posible escriba tests JUnit para lograr cobertura de nodos pero no cobertura de arcos. Utilice una herramienta para medir cobertura y verifique que la suite efectivamente logra cubrir todos los nodos.
+
+t0 = [1, 2, 3, 4, 5, 7, 4, 8, 9, 10, 2, 11]
+t1 = [1, 2, 3, 4, 5, 6, 8, 9, 10, 2, 11]
+
+No es posible escribir un test JUnit para lograr cobertura de nodos pero no de arcos.
+
+e) De ser posible escriba tests JUnit para lograr cobertura de aristas pero no cobertura de caminos primos. Utilice una herramienta para medir cobertura y verifique que la suite efectivamente logra cubrir todas las aristas.
+
+t: (n = 3)
+
+[1,2,3,4,5,7,4,8,9,10,2,3,4,5,6,8,10,2,3,4,5,7,4,5,7,4,8,9,10,2,11]
+
+Cubro cobertura de arcos?
+TRE = {
+(1, 2) ~
+(2, 3) ~
+(2, 11) ~
+(3, 4) ~
+(4, 5) ~
+(4, 8) ~
+(5, 6) ~
+(5, 7) ~
+(6, 8) ~
+(7, 4) ~
+(8, 9) ~
+(8, 10) ~
+(9, 10) ~
+(10, 2) ~
+}
+
+Se cubre cobertura de arcos.
+
+Cubro cobertura de caminos primos?
+
+TRP = {
+1. [3,4,5,6,8,9,10,2,11] !
+2. [4,5,6,8,9,10,2,3,4] !
+3. [5,6,8,9,10,2,3,4,5] !
+4. [3,4,5,6,8,9,10,2,3] !
+5. [1,2,3,4,5,6,8,9,10] !
+6. [2,3,4,5,6,8,9,10,2] !
+7. [6,8,9,10,2,3,4,5,6] !
+8. [8,9,10,2,3,4,5,6,8] ~
+9. [9,10,2,3,4,5,6,8,9] !
+10. [10,2,3,4,5,6,8,9,10] !
+11. [7,4,5,6,8,9,10,2,11] !
+12. [6,8,9,10,2,3,4,5,7] !
+13. [7,4,5,6,8,9,10,2,3] !
+14. [4,5,6,8,10,2,3,4] ~
+15. [5,7,4,8,9,10,2,3] ~
+16. [5,6,8,10,2,3,4,5] ~
+17. [3,4,5,6,8,10,2,11] !
+18. [1,2,3,4,5,6,8,10] !
+19. [2,3,4,5,6,8,10,2] ~
+20. [3,4,5,6,8,10,2,3] ~
+21. [5,7,4,8,9,10,2,11] ~
+22. [8,10,2,3,4,5,6,8] !
+23. [10,2,3,4,5,6,8,10] ~
+24. [7,4,5,6,8,10,2,11] !
+25. [6,8,10,2,3,4,5,6] !
+26. [6,8,10,2,3,4,5,7] ~
+27. [7,4,5,6,8,10,2,3] !
+28. [4,8,9,10,2,3,4] ~
+29. [3,4,8,9,10,2,11] !
+30. [1,2,3,4,8,9,10] !
+31. [2,3,4,8,9,10,2] !
+32. [3,4,8,9,10,2,3] !
+33. [5,7,4,8,10,2,3] !
+34. [8,9,10,2,3,4,8] !
+35. [10,2,3,4,8,9,10] !
+36. [9,10,2,3,4,8,9] !
+37. [5,7,4,8,10,2,11] !
+38. [3,4,8,10,2,11] !
+39. [3,4,8,10,2,3] !
+40. [4,8,10,2,3,4] !
+41. [1,2,3,4,8,10] !
+42. [1,2,3,4,5,7] ~
+43. [2,3,4,8,10,2] !
+44. [8,10,2,3,4,8] !
+45. [10,2,3,4,8,10] !
+46. [4,5,7,4] ~
+47. [5,7,4,5] ~
+48. [7,4,5,7] ~
+49. [1,2,11] !
+}
+
+No cubro cobertura de caminos primos. El camino primo [3,4,5,6,8,9,10,2,11] no se recorre.
+
+f) De ser posible escriba tests JUnit para obtener cobertura de caminos primos, usando el criterio de máximo esfuerzo para RTs no realizables. Utilice una herramienta para medir cobertura y verifique que la suite logra cubrir todas las aristas. Recuerde que esto debería ocurrir debido a que cobertura de caminos primos subsume a cobertura de aristas.
+
+Recordatorio:
+Recorrido de maximo esfuerzo
+- Satisfacer tantos RTs como sea posible sin sidetrips.
+- Permitir sidetrips para satisfacer los restantes RTs.
+
+t: n = 5
+[1,2,3,4,5,7,4,8,9,10,2,3,4,5,6,8,10,2,3,4,5,7,4,5,7,4,8,9,10,2,3,4,5,6,8,10,2,3,4,5,7,4,5,7,4,5,7,4,8,9,10,2,3,4,5,6,8,10,2,3,4,5,7,4,5,6,8,10,2,3,4,5,6,8,10,2,3,4,5,7,4,5,7,4,5,7,4,5,7,4,8,9,10,2,11]
+
+t: n = 1
+[1,2,11]
+
+TRP = {
+1. [3,4,5,6,8,9,10,2,11] ! //irrealizable
+2. [4,5,6,8,9,10,2,3,4] ! //irrealizable
+3. [5,6,8,9,10,2,3,4,5] ! //irrealizable
+4. [3,4,5,6,8,9,10,2,3] ! //irrealizable
+5. [1,2,3,4,5,6,8,9,10] ! //irrealizable
+6. [2,3,4,5,6,8,9,10,2] ! //irrealizable
+7. [6,8,9,10,2,3,4,5,6] ! //irrealizable
+8. [8,9,10,2,3,4,5,6,8] ~
+9. [9,10,2,3,4,5,6,8,9] ! //irrealizable
+10. [10,2,3,4,5,6,8,9,10] ! //irrealizable
+11. [7,4,5,6,8,9,10,2,11] ! //irrealizable
+12. [6,8,9,10,2,3,4,5,7] ! //irrealizable
+13. [7,4,5,6,8,9,10,2,3] ! //irrealizable
+14. [4,5,6,8,10,2,3,4] ~
+15. [5,7,4,8,9,10,2,3] ~
+16. [5,6,8,10,2,3,4,5] ~
+17. [3,4,5,6,8,10,2,11] ! //irrealizable
+18. [1,2,3,4,5,6,8,10] ! //irrealizable
+19. [2,3,4,5,6,8,10,2] ~
+20. [3,4,5,6,8,10,2,3] ~
+21. [5,7,4,8,9,10,2,11] ~
+22. [8,10,2,3,4,5,6,8] ~
+23. [10,2,3,4,5,6,8,10] ~
+24. [7,4,5,6,8,10,2,11] ! //irrealizable
+25. [6,8,10,2,3,4,5,6] ~
+26. [6,8,10,2,3,4,5,7] ~
+27. [7,4,5,6,8,10,2,3] ~
+28. [4,8,9,10,2,3,4] ~
+29. [3,4,8,9,10,2,11] ! //irrealizable: al menos una vez se puede entrar al for
+30. [1,2,3,4,8,9,10] ! //irrealizable: al menos una vez se puede entrar al for
+31. [2,3,4,8,9,10,2] ! //irrealizable: al menos una vez se puede entrar al for
+32. [3,4,8,9,10,2,3] ! //irrealizable: al menos una vez se puede entrar al for
+33. [5,7,4,8,10,2,3] ! //irrealizable: para pasar de 8 a 10 isPrime tiene que ser falso
+34. [8,9,10,2,3,4,8] ! //irrealizable: al menos una vez se puede entrar al for
+35. [10,2,3,4,8,9,10] ! //irrealizable: al menos una vez se puede entrar al for
+36. [9,10,2,3,4,8,9] ! //irrealizable: al menos una vez se puede entrar al for
+37. [5,7,4,8,10,2,11] ! //irrealizable: para pasar de 8 a 10 curPrime no tiene que ser divisible por ningun numero en primes
+38. [3,4,8,10,2,11] ! //irrealizable: al menos una vez se puede entrar al for
+39. [3,4,8,10,2,3] ! //irrealizable: al menos una vez se puede entrar al for
+40. [4,8,10,2,3,4] ! //la unica forma de pasar de 4 a 8 es si i > numPrimes - 1 y por ende isPrime es true
+41. [1,2,3,4,8,10] ! //irrealizable: al menos una vez se puede entrar al for
+42. [1,2,3,4,5,7] ~
+43. [2,3,4,8,10,2] ! //irrealizable: al menos una vez se puede entrar al for
+44. [8,10,2,3,4,8] ! //irrealizable: al menos una vez se puede entrar al for
+45. [10,2,3,4,8,10] ! //irrealizable: al menos una vez se puede entrar al for
+46. [4,5,7,4] ~
+47. [5,7,4,5] ~
+48. [7,4,5,7] ~
+49. [1,2,11] ~
+}

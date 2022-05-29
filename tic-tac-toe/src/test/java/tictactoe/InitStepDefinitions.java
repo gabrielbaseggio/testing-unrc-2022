@@ -129,7 +129,6 @@ public class InitStepDefinitions {
 	    
 	}
 
-
 	@ParameterType("X|O")
 	public Ficha ficha( String valor ) {
 		return Ficha.valueOf( valor );
