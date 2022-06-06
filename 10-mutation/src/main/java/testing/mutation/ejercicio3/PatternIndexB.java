@@ -37,7 +37,7 @@ public class PatternIndexB
                if (subject.charAt(iSub + iPat) != pattern.charAt(iPat))
                {
                   rtnIndex = NOTFOUND;
-                  // System.out.println ("inside inner if statement (reached)");
+                   System.out.println ("inside inner if statement (reached)");
                   // isPat = false;
                   isPat = true;   // Mutated statement
                   break;  // out of for loop
